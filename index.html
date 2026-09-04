@@ -145,10 +145,82 @@ footer{padding:28px 6vw 34px;font-size:12px;color:var(--mute);display:flex;justi
   .seasons .tags{top:12vh;bottom:auto;left:6vw;right:6vw;text-align:left;display:flex;flex-wrap:wrap;gap:6px 16px}
   .seasons .tags div{font-size:11px}
 }
+
+/* pinned download */
+.topdl{position:fixed;right:28px;top:18px;z-index:70;font-family:inherit}
+.topdl>button{border:1px solid var(--paper);background:rgba(11,11,11,.55);backdrop-filter:blur(8px);color:var(--paper);padding:11px 18px;font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:500;cursor:pointer;font-family:inherit;display:flex;align-items:center;gap:10px;transition:background .25s,color .25s}
+.topdl>button:hover,.topdl.open>button{background:var(--paper);color:var(--bg)}
+.topdl>button i{width:6px;height:6px;border-right:1px solid currentColor;border-bottom:1px solid currentColor;transform:rotate(45deg) translateY(-2px);display:inline-block}
+.dlmenu{position:absolute;right:0;top:calc(100% + 8px);width:320px;background:rgba(11,11,11,.92);backdrop-filter:blur(10px);border:1px solid var(--line);display:none}
+.topdl.open .dlmenu{display:block}
+.dlmenu a{display:block;padding:16px 18px;border-bottom:1px solid var(--line);transition:background .2s}
+.dlmenu a:last-child{border-bottom:0}
+.dlmenu a:hover{background:rgba(255,255,255,.06)}
+.dlmenu b{display:block;font-weight:500;font-size:14px}
+.dlmenu span{display:block;font-size:12px;color:var(--mute);margin-top:4px}
+.topdl .short{display:none}
+
+/* karelia */
+.kar{padding:clamp(90px,12vw,160px) 6vw;background:#0E0E0E}
+.kar h2{font-size:clamp(30px,4vw,60px);max-width:22ch}
+.kar .lead{color:var(--paper2);font-weight:300;font-size:clamp(16px,1.3vw,20px);max-width:56ch;margin:20px 0 0}
+.kar .grid{display:grid;grid-template-columns:1.15fr 1fr;gap:6vw;margin-top:56px;align-items:start}
+.kar .chart{border-top:1px solid var(--line);padding-top:18px}
+.kar .chart .kick{display:block;margin-bottom:14px}
+.kar .chart svg{width:100%;height:auto;display:block}
+.kar .src{font-size:12px;color:var(--mute);margin-top:12px}
+.kar .facts{display:grid;gap:0}
+.kar .facts div{padding:18px 0;border-bottom:1px solid var(--line);display:grid;grid-template-columns:120px 1fr;gap:18px;align-items:baseline}
+.kar .facts b{font-size:clamp(30px,3.2vw,46px);font-weight:200;line-height:1;font-variant-numeric:tabular-nums;white-space:nowrap}
+.kar .facts b small{font-size:.4em;color:var(--paper2);font-weight:400;margin-left:4px}
+.kar .facts span{font-size:15px;color:var(--paper2);line-height:1.45}
+.kar .land{margin-top:72px;border-top:1px solid var(--line);padding-top:28px;display:grid;grid-template-columns:1fr 1.15fr;gap:6vw;align-items:center}
+.kar .land h3{font-size:clamp(24px,2.6vw,38px)}
+.kar .land p{color:var(--paper2);font-weight:300;font-size:15px;margin:14px 0 0;max-width:46ch}
+.kar .land svg{width:100%;height:auto;display:block}
+
+/* product numbers */
+.prod{padding:clamp(90px,12vw,160px) 6vw 0;background:var(--bg)}
+.prod h2{font-size:clamp(30px,4vw,60px);margin-top:18px;max-width:20ch}
+.four{display:grid;grid-template-columns:repeat(4,1fr);gap:3vw;margin-top:54px}
+.four .n{border-top:1px solid var(--line);padding-top:20px;opacity:0;transform:translateY(18px);transition:opacity .8s ease,transform .8s ease}
+.four .n.in{opacity:1;transform:none}
+.four .n b{display:block;font-size:clamp(44px,5.6vw,92px);font-weight:200;line-height:1;font-variant-numeric:tabular-nums;white-space:nowrap}
+.four .n b small{font-size:.32em;font-weight:400;color:var(--paper2);margin-left:8px}
+.four .n span{display:block;font-size:14px;color:var(--paper2);margin-top:12px;max-width:26ch;line-height:1.45}
+.thesis{margin-top:48px;max-width:64ch;font-size:clamp(17px,1.5vw,23px);font-weight:300;color:var(--paper);border-left:1px solid var(--acc);padding-left:22px;line-height:1.4}
+.power{min-height:0;padding-top:clamp(60px,7vw,100px)}
+.value .nums{grid-template-columns:repeat(4,1fr);gap:3vw}
+.value .n b{font-size:clamp(44px,5.6vw,92px)}
+.value .n b small{white-space:nowrap}
+.value .stab{margin-top:56px;border-top:1px solid var(--line);padding-top:22px;display:grid;grid-template-columns:1fr 1fr;gap:6vw;align-items:center}
+.value .stab p{color:var(--paper2);font-weight:300;font-size:clamp(16px,1.3vw,20px);margin:0;max-width:50ch}
+.value .stab svg{width:100%;height:auto;display:block}
+.seasons .sl{transition:none}
+.phl{position:absolute;right:6vw;top:14vh;z-index:4;border:1px dashed var(--paper);padding:8px 12px;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--paper);opacity:0;transition:opacity .4s;background:rgba(11,11,11,.4)}
+.phl.on{opacity:.85}
+@media(max-width:900px){
+  .topdl{right:14px;top:14px}.topdl>button{padding:9px 12px;letter-spacing:.16em}.topdl .long{display:none}.topdl .short{display:inline}
+  .dlmenu{width:min(320px,calc(100vw - 28px))}
+  .kar .grid,.kar .land,.value .stab{grid-template-columns:1fr;gap:40px}
+  .kar .facts div{grid-template-columns:1fr;gap:6px}
+  .four{grid-template-columns:1fr 1fr;gap:28px 20px}
+  .four .n b{font-size:clamp(36px,11vw,56px)}
+  .value .nums{grid-template-columns:1fr 1fr;gap:28px 20px}
+  .value .n b{font-size:clamp(36px,11vw,56px)}
+  .phl{top:auto;bottom:34vh;right:6vw}
+}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.layer,.line,.value .n{transition:none}.enter:after{animation:none}}
 </style></head><body>
 
 <a class="brand" href="#top"><i></i>LONGEVITY · Ладога</a>
+<div class="topdl" id="topdl">
+  <button type="button" aria-haspopup="true" aria-expanded="false"><span class="long">Скачать презентацию</span><span class="short">PDF</span><i></i></button>
+  <div class="dlmenu">
+    <a href="pdf/LONGEVITY_Ladoga_investment.pdf" download="LONGEVITY_Ladoga_investment.pdf" data-dl="inv"><b>Инвестиционная презентация</b><span>Земля, продукт, цифры, предконцепция · 45 экранов · PDF</span></a>
+    <a href="pdf/LONGEVITY_Ladoga_preconcept.pdf" download="LONGEVITY_Ladoga_preconcept.pdf" data-dl="arch"><b>Архитектурная предконцепция</b><span>Мастер-план, зонирование, визуализации · PDF</span></a>
+  </div>
+</div>
 <div class="ringnav" id="ringnav">
   <svg viewBox="0 0 64 64"><circle class="track" cx="32" cy="32" r="28"/><circle class="prog" id="prog" cx="32" cy="32" r="28" stroke-dasharray="175.9" stroke-dashoffset="175.9"/></svg>
   <div class="lbl" id="ringlbl">Вдох</div>
@@ -192,7 +264,26 @@ footer{padding:28px 6vw 34px;font-size:12px;color:var(--mute);display:flex;justi
   </div>
 </section>
 
-<!-- 3 СЕЗОНЫ -->
+<!-- 3 КАРЕЛИЯ -->
+<section class="ch kar" id="karelia" data-name="Карелия">
+  <span class="kick">Почему Карелия</span>
+  <h2 style="margin-top:18px">Поток растёт, а пятизвёздочных объектов — ноль</h2>
+  <p class="lead">Сортавала — ворота Карелии: через неё идёт 80% туристического трафика республики. Валаам, Рускеала, Ладожские шхеры — миллион гостей в год уже здесь. Размещать их в премиум-сегменте негде.</p>
+  <div class="grid">
+    <div class="chart"><span class="kick">Турпоток Республики Карелия · млн человек в год</span><svg viewBox="0 0 760 300" role="img" aria-label="Турпоток Карелии" font-family="Manrope,sans-serif"><line x1="40" y1="183" x2="740" y2="183" stroke="#F5F4F1" stroke-opacity=".1"/><text x="32" y="187" font-size="12" fill="#9C9992" text-anchor="end">1</text><line x1="40" y1="117" x2="740" y2="117" stroke="#F5F4F1" stroke-opacity=".1"/><text x="32" y="121" font-size="12" fill="#9C9992" text-anchor="end">2</text><line x1="40" y1="50" x2="740" y2="50" stroke="#F5F4F1" stroke-opacity=".1"/><text x="32" y="54" font-size="12" fill="#9C9992" text-anchor="end">3</text><rect x="40" y="193" width="54" height="57" fill="#F5F4F1" fill-opacity=".85"/><text x="67" y="185" font-size="13" fill="#F5F4F1" text-anchor="middle" font-weight="400">0,85</text><text x="67" y="270" font-size="12" fill="#9C9992" text-anchor="middle">2019</text><rect x="129" y="200" width="54" height="50" fill="#F5F4F1" fill-opacity=".85"/><text x="156" y="192" font-size="13" fill="#F5F4F1" text-anchor="middle" font-weight="400">0,75</text><text x="156" y="270" font-size="12" fill="#9C9992" text-anchor="middle">2020</text><rect x="219" y="187" width="54" height="63" fill="#F5F4F1" fill-opacity=".85"/><text x="246" y="179" font-size="13" fill="#F5F4F1" text-anchor="middle" font-weight="400">0,95</text><text x="246" y="270" font-size="12" fill="#9C9992" text-anchor="middle">2021</text><rect x="308" y="183" width="54" height="67" fill="#F5F4F1" fill-opacity=".85"/><text x="335" y="175" font-size="13" fill="#F5F4F1" text-anchor="middle" font-weight="400">1,0</text><text x="335" y="270" font-size="12" fill="#9C9992" text-anchor="middle">2022</text><rect x="398" y="181" width="54" height="69" fill="#F5F4F1" fill-opacity=".85"/><text x="425" y="173" font-size="13" fill="#F5F4F1" text-anchor="middle" font-weight="400">1,03</text><text x="425" y="270" font-size="12" fill="#9C9992" text-anchor="middle">2023</text><rect x="487" y="179" width="54" height="71" fill="#F5F4F1" fill-opacity=".85"/><text x="514" y="171" font-size="13" fill="#F5F4F1" text-anchor="middle" font-weight="400">1,06</text><text x="514" y="270" font-size="12" fill="#9C9992" text-anchor="middle">2024</text><rect x="577" y="154" width="54" height="96" fill="#D9A86C" fill-opacity=".85"/><text x="604" y="146" font-size="13" fill="#D9A86C" text-anchor="middle" font-weight="600">1,44</text><text x="604" y="270" font-size="12" fill="#9C9992" text-anchor="middle">2025</text><rect x="666" y="50" width="54" height="200" fill="none" stroke="#F5F4F1" stroke-dasharray="4 4" stroke-opacity=".7"/><text x="693" y="42" font-size="13" fill="#F5F4F1" text-anchor="middle" font-weight="400">3,0</text><text x="693" y="270" font-size="12" fill="#9C9992" text-anchor="middle">2030 цель</text><text x="604" y="288" font-size="11" fill="#D9A86C" text-anchor="middle">+36% за год</text></svg><div class="src">Источник: Министерство экономического развития Республики Карелия, 2026. Цель республики — 3 млн гостей к 2030 году.</div></div>
+    <div class="facts">
+      <div><b>0</b><span>отелей 5★ и medi-hotel в радиусе 100 км. Загрузка отелей Сортавалы — 85%, к 2030 году прогнозируется дефицит номерного фонда около 14%.</span></div>
+      <div><b>8<small>мин</small></b><span>от центра Сортавалы по круглогодичной дороге. Три часа от Петербурга на «Ласточке» или по трассе, пять–шесть — из Москвы, час — вертолётом. 16 млн человек живут в трёх–пяти часах от берега.</span></div>
+      <div><b>5<small>млрд ₽</small></b><span>Cosmos Selection строит курорт на том же острове: 24 га, 100 номеров и 82 гостевых дома, соглашение ПМЭФ-2026. Федеральные игроки уже верят в эту локацию — и идут в 4★ без медицины.</span></div>
+    </div>
+  </div>
+  <div class="land">
+    <div><span class="kick">Земля</span><h3 style="margin-top:14px">Не дешёвая — недооценённая</h3><p>Сотка в Красной Поляне стоит от 7 млн ₽, на Алтае у озера — 1,5 млн. Здесь — 300 тысяч: 600 млн ₽ за 20 га с собственным берегом, дорогой и техусловиями. Покупатель входит до того, как рынок оценит Приладожье так же, как оценил Красную Поляну и Алтай.</p></div>
+    <div><svg viewBox="0 0 760 202" role="img" aria-label="Цена сотки" font-family="Manrope,sans-serif"><text x="196" y="26.0" font-size="14" fill="#F5F4F1" text-anchor="end" font-weight="600">LONGEVITY · Ладога</text><rect x="210" y="8" width="17" height="26" fill="#D9A86C" fill-opacity="1"/><text x="237" y="26.0" font-size="13" fill="#D9A86C">300 тыс. ₽</text><text x="196" y="74.0" font-size="14" fill="#D8D6D0" text-anchor="end" font-weight="400">Манжерок, Алтай</text><rect x="210" y="56" width="86" height="26" fill="#F5F4F1" fill-opacity="0.55"/><text x="306" y="74.0" font-size="13" fill="#D8D6D0">1,5 млн ₽ · ×5</text><text x="196" y="122.0" font-size="14" fill="#D8D6D0" text-anchor="end" font-weight="400">Сочи, берег моря</text><rect x="210" y="104" width="229" height="26" fill="#F5F4F1" fill-opacity="0.55"/><text x="449" y="122.0" font-size="13" fill="#D8D6D0">4 млн ₽ · ×13</text><text x="196" y="170.0" font-size="14" fill="#D8D6D0" text-anchor="end" font-weight="400">Красная Поляна</text><rect x="210" y="152" width="400" height="26" fill="#F5F4F1" fill-opacity="0.55"/><text x="620" y="170.0" font-size="13" fill="#D8D6D0">от 7 млн ₽ · ×23</text><text x="210" y="200" font-size="11" fill="#9C9992">₽ за сотку · нижняя граница предложений, 2026</text></svg></div>
+  </div>
+</section>
+
+<!-- 4 СЕЗОНЫ -->
 <section class="ch seasons" id="seasons" data-name="Сезоны" data-len="2.2">
   <div class="stage">
     <img class="layer on" data-i="0" src="img/general.jpg" alt="">
@@ -231,12 +322,21 @@ footer{padding:28px 6vw 34px;font-size:12px;color:var(--mute);display:flex;justi
 </section>
 
 <!-- 5 СИЛА -->
-<section class="ch" id="power" data-name="Сила">
+<section class="ch" id="power" data-name="Продукт">
+  <div class="prod">
+    <span class="kick">Продукт</span>
+    <h2>Мы продаём не ночи. Мы возвращаем время.</h2>
+    <div class="four" id="four">
+      <div class="n"><b>34</b><span>кабинета медицинского блока — ядро курорта, от которого считается всё остальное</span></div>
+      <div class="n"><b>80</b><span>ключей: 72 номера, 8 береговых коттеджей и 3 резиденции — столько, сколько медблок обслуживает на пике</span></div>
+      <div class="n"><b>809<small>тыс. ₽</small></b><span>программа 7 ночей: проживание, медицина, спа, питание и врач в одной цене</span></div>
+      <div class="n"><b>0</b><span>пятизвёздочных объектов в регионе — ниша 5★ с превентивной медициной свободна</span></div>
+    </div>
+    <p class="thesis">Продукт продаёт программы восстановления, а не ночи. Отсюда средний чек выше отельного — и маржа, которой у гостиницы не бывает.</p>
+  </div>
   <div class="power">
     <div>
-      <span class="kick">Сила</span>
-      <h2 style="margin-top:18px">Мы продаём не ночи. Мы возвращаем время.</h2>
-      <p>Ядро курорта — медицинский блок на 34 кабинета, а не квадратные метры. Гость покупает программу на 5–14 ночей, где проживание, медицина, спа, питание и врач — в одной цене. Возвращается, потому что видит результат.</p>
+      <p style="margin-top:0">Ядро курорта — медицинский блок на 34 кабинета, а не квадратные метры. Гость покупает программу на 5–14 ночей, где проживание, медицина, спа, питание и врач — в одной цене. Возвращается, потому что видит результат.</p>
       <div class="menu">
         <div><b>Диагностика и собственная лаборатория</b> · биомаркеры, эпигенетика</div>
         <div><b>Longevity-протоколы</b> · функциональная медицина, IV-терапия, NAD+</div>
@@ -264,16 +364,21 @@ footer{padding:28px 6vw 34px;font-size:12px;color:var(--mute);display:flex;justi
   </div>
 </section>
 
-<!-- 6 ВЫГОДА -->
-<section class="ch value" id="value" data-name="Выгода">
-  <span class="kick">Выгода</span>
-  <h2 style="margin-top:18px;font-size:clamp(30px,4vw,60px)">Свободная ниша, подготовленный актив, экономика по ковенантам</h2>
+<!-- 7 ЭКОНОМИКА -->
+<section class="ch value" id="value" data-name="Экономика">
+  <span class="kick">Экономика</span>
+  <h2 style="margin-top:18px;font-size:clamp(30px,4vw,60px)">Не эпические — хорошие, проверяемые цифры</h2>
   <div class="nums" id="nums">
-    <div class="n"><b>4,5<small>млрд ₽</small></b><span>CAPEX, включая землю. Земля кратно дешевле Сочи и Красной Поляны, ниша 5★ в округе пуста <span class="fm">FM v?</span></span></div>
-    <div class="n"><b>26,8<small>%</small></b><span>IRR на капитал с выходом, 19,1% — операционный. Окупаемость собственных средств — шесть лет</span></div>
-    <div class="n"><b>3,16<small>×</small></b><span>min DSCR при норме банка 1,5×. Проект проходит ковенант даже в стресс-сценарии при ставке 10,5%</span></div>
+    <div class="n"><b>4,5<small>млрд ₽</small></b><span>CAPEX с землёй. Земля — 600 млн, 13% проекта при норме 15–20%</span></div>
+    <div class="n"><b>4,5 / 2,05</b><span>выручка и EBITDA на стабилизации, млрд ₽ в год. Маржа 46% — за счёт программ</span></div>
+    <div class="n"><b>26,8<small>%</small></b><span>IRR на капитал с выходом, 19,1% — операционный. Окупаемость собственных средств — 6 лет</span></div>
+    <div class="n"><b>3,16<small>×</small></b><span>min DSCR при норме банка 1,5×. Ковенант проходит даже в стресс-сценарии при ставке 10,5%</span></div>
   </div>
-  <p class="after">Полная модель, четыре сценария, структура CAPEX и риски с ответами — в инвестиционной презентации. Она — за дверью ниже.</p>
+  <div class="stab">
+    <div><span class="kick">Расчётная модель</span><p style="margin-top:14px">Загрузка растёт четыре года: 44 → 52 → 63 → 70%. На стабильной загрузке около 70% курорт делает 4,5 млрд ₽ выручки и 2,05 млрд EBITDA в год — потому что продаёт курс с медициной, а не номеро-ночь.</p></div>
+    <div><svg viewBox="0 0 760 280" role="img" aria-label="Рост загрузки" font-family="Manrope,sans-serif"><rect x="74" y="121" width="89" height="99" fill="#F5F4F1" fill-opacity="0.6"/><text x="119" y="113" font-size="15" fill="#F5F4F1" text-anchor="middle" font-weight="400">44%</text><text x="119" y="240" font-size="12" fill="#9C9992" text-anchor="middle">год 1</text><rect x="252" y="103" width="89" height="117" fill="#F5F4F1" fill-opacity="0.6"/><text x="296" y="95" font-size="15" fill="#F5F4F1" text-anchor="middle" font-weight="400">52%</text><text x="296" y="240" font-size="12" fill="#9C9992" text-anchor="middle">год 2</text><rect x="429" y="78" width="89" height="142" fill="#F5F4F1" fill-opacity="0.6"/><text x="474" y="70" font-size="15" fill="#F5F4F1" text-anchor="middle" font-weight="400">63%</text><text x="474" y="240" font-size="12" fill="#9C9992" text-anchor="middle">год 3</text><rect x="607" y="62" width="89" height="158" fill="#D9A86C" fill-opacity="1"/><text x="651" y="54" font-size="15" fill="#D9A86C" text-anchor="middle" font-weight="600">70%</text><text x="651" y="240" font-size="12" fill="#9C9992" text-anchor="middle">год 4</text><text x="30" y="278" font-size="11" fill="#9C9992">загрузка по годам после открытия</text><text x="740" y="278" font-size="12" fill="#D9A86C" text-anchor="end">год 4 · 4,5 млрд ₽ выручки · 2,05 млрд EBITDA</text></svg></div>
+  </div>
+  <p class="after">Полная финансовая модель в Excel — четыре сценария, структура CAPEX, банковские ковенанты — по запросу. Инвестиционная презентация — ниже.</p>
 </section>
 
 <!-- 7 ВЫДОХ -->
@@ -282,18 +387,18 @@ footer{padding:28px 6vw 34px;font-size:12px;color:var(--mute);display:flex;justi
     <img class="layer on" src="img/night.jpg" alt="" style="object-position:center 45%;opacity:.55">
     <div class="grad"></div>
     <div class="doors">
-      <a class="door" href="pdf/LONGEVITY_Ladoga_presentation.pdf" download>
-        <div><span class="kick">Дверь первая · чувство</span><h3 style="margin-top:12px">Презентация проекта</h3><p>Место, философия, один день гостя, продукт. 34 экрана, чтобы влюбиться.</p></div>
-        <div class="row"><span class="btn">Скачать PDF</span><span class="note">PDF · 34 экрана · ≈ 20 МБ</span></div>
+      <a class="door" href="pdf/LONGEVITY_Ladoga_investment.pdf" download="LONGEVITY_Ladoga_investment.pdf" data-dl="inv">
+        <div><span class="kick">Дверь первая · цифры</span><h3 style="margin-top:12px">Инвестиционная презентация</h3><p>Земля и локация, продукт, экономика, архитектурная предконцепция. 45 экранов по логике: локация → продукт → цифры → архитектура.</p></div>
+        <div class="row"><span class="btn">Скачать PDF</span><span class="note">PDF · 45 экранов · ≈ 10 МБ</span></div>
       </a>
-      <a class="door" href="https://t.me/danywl" target="_blank" rel="noopener" data-copy="deck">
-        <div><span class="kick">Дверь вторая · число</span><h3 style="margin-top:12px">Инвестиционная презентация</h3><p>Актив, рынок, финмодель, сценарии, риски и форматы входа. Отправляем лично — напишите нам в Telegram.</p></div>
-        <div class="row"><span class="btn acc">Получить в Telegram</span><span class="note">текст сообщения скопируется автоматически</span></div>
+      <a class="door" href="pdf/LONGEVITY_Ladoga_preconcept.pdf" download="LONGEVITY_Ladoga_preconcept.pdf" data-dl="arch">
+        <div><span class="kick">Дверь вторая · форма</span><h3 style="margin-top:12px">Архитектурная предконцепция</h3><p>Мастер-план, зонирование, дорожная сеть, точки притяжения и визуализации от Geometrium. Предварительная концепция.</p></div>
+        <div class="row"><span class="btn">Скачать PDF</span><span class="note">PDF · 58 экранов · ≈ 10 МБ</span></div>
       </a>
     </div>
     <div class="final">
       <div><h2>Мы возвращаем время. Начнём с вашего.</h2><span class="kick">Финансовая модель и показ участка — по запросу</span></div>
-      <a class="btn" href="https://t.me/danywl" target="_blank" rel="noopener" data-copy="fm">Запросить показ участка</a>
+      <a class="btn acc" href="https://t.me/danywl" target="_blank" rel="noopener" data-copy="fm">Запросить показ участка</a>
     </div>
   </div>
 </section>
@@ -307,6 +412,8 @@ footer{padding:28px 6vw 34px;font-size:12px;color:var(--mute);display:flex;justi
   document.querySelectorAll('a[data-blob]').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault(); var src=a.getAttribute('href'); fetch(src).then(function(r){return r.blob()}).then(function(bl){var u=URL.createObjectURL(bl); var l=document.createElement('a'); l.href=u; l.download=a.getAttribute('download'); document.body.appendChild(l); l.click(); setTimeout(function(){URL.revokeObjectURL(u); l.remove()},2000); say('Презентация скачивается')}).catch(function(){window.open(src,'_blank')});})});
   document.querySelectorAll('[data-copy]').forEach(function(a){a.addEventListener('click',function(){var m=MSG[a.dataset.copy]; try{navigator.clipboard.writeText(m).then(function(){say('Текст сообщения скопирован — вставьте его в чат')})}catch(e){} })});
 
+  var td=document.getElementById('topdl'); td.querySelector('button').addEventListener('click',function(e){e.stopPropagation(); td.classList.toggle('open'); this.setAttribute('aria-expanded',td.classList.contains('open'))}); document.addEventListener('click',function(){td.classList.remove('open')});
+  document.querySelectorAll('a[data-ph]').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault(); say('PDF будет доступен на опубликованном сайте')})});
   // hero letters
   var w=document.getElementById('word'); w.innerHTML=[].map.call(w.textContent,function(c,i){return '<span style="animation-delay:'+(0.35+i*0.11)+'s">'+c+'</span>'}).join('');
   setTimeout(function(){document.querySelector('.hero').classList.add('ready')},900);
@@ -341,6 +448,7 @@ footer{padding:28px 6vw 34px;font-size:12px;color:var(--mute);display:flex;justi
     vids.forEach(function(v){var r=v.getBoundingClientRect(); var vis=r.right>0&&r.left<window.innerWidth&&r.bottom>0&&r.top<window.innerHeight; if(vis){if(v.paused){var pr=v.play(); if(pr&&pr.catch)pr.catch(function(){})}} else if(!v.paused) v.pause();});
     // reveal lines
     document.querySelectorAll('.ch:not(.hero) .line').forEach(function(l){var r=l.getBoundingClientRect(); if(r.top<window.innerHeight*0.9) l.classList.add('in')});
+    var four=document.getElementById('four'); if(four.getBoundingClientRect().top<window.innerHeight*0.8){[].forEach.call(four.children,function(c,i){setTimeout(function(){c.classList.add('in')},i*250)})}
     var nums=document.getElementById('nums'); if(nums.getBoundingClientRect().top<window.innerHeight*0.75){[].forEach.call(nums.children,function(c,i){setTimeout(function(){c.classList.add('in')},i*350)})}
     var cyc=document.getElementById('cyc'); if(!cyc._done && cyc.getBoundingClientRect().top<window.innerHeight*0.75){cyc._done=true; cyc.style.strokeDashoffset=0; [].forEach.call(document.querySelectorAll('#cycsvg .st'),function(g,i){setTimeout(function(){g.classList.add('in')},300+i*520)});}
   }
