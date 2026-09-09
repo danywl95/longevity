@@ -139,7 +139,14 @@ footer{padding:28px 6vw 34px;font-size:12px;color:var(--mute);display:flex;justi
   .value .nums{grid-template-columns:1fr;gap:34px}
   .doors{grid-template-columns:1fr}
   .door{min-height:0;padding:24px}
-  .exhale .final{position:static;padding:24px 6vw 0}
+  .exhale .stage{flex-direction:column;justify-content:flex-start;padding:12vh 0 6vh;height:auto;min-height:100svh;position:relative}
+  .exhale .stage .layer{position:absolute}
+  .exhale .final{position:static;padding:24px 6vw 0;width:100%}
+  .track{display:block}
+  .mom{position:absolute;inset:0;flex:none;width:100%;opacity:0}
+  .mom:first-child{opacity:1}
+  .mom .cap{right:6vw}
+  .cycle svg{max-width:none;width:112%;margin-left:-6%}
   .hero .word{top:30%}
   .clock{top:64px}
   .seasons .tags{top:12vh;bottom:auto;left:6vw;right:6vw;text-align:left;display:flex;flex-wrap:wrap;gap:6px 16px}
@@ -349,7 +356,7 @@ footer{padding:28px 6vw 34px;font-size:12px;color:var(--mute);display:flex;justi
       <svg viewBox="0 0 800 640" role="img" aria-label="Кольцо гостя" id="cycsvg">
         <circle cx="400" cy="320" r="200" fill="none" stroke="rgba(255,255,255,.14)"/>
         <circle cx="400" cy="320" r="200" fill="none" stroke="#F5F4F1" stroke-width="1.6" stroke-dasharray="1257" stroke-dashoffset="1257" id="cyc" style="transform:rotate(-90deg);transform-origin:50% 50%;transition:stroke-dashoffset 3.2s cubic-bezier(.4,0,.2,1)"/>
-        <g font-family="Manrope,sans-serif" font-size="18" fill="#F5F4F1">
+        <g font-family="Manrope,sans-serif" font-size="22" fill="#F5F4F1">
           <g class="st"><circle cx="400" cy="120" r="6"/><text x="400" y="86" text-anchor="middle">приезд · биомаркеры на входе</text></g>
           <g class="st"><circle cx="573" cy="220" r="6"/><text x="600" y="214">программа</text><text x="600" y="234" fill="#D8D6D0" font-size="15">7 ночей · медицина, спа, врач</text></g>
           <g class="st"><circle cx="573" cy="420" r="6"/><text x="600" y="416">отъезд</text><text x="600" y="436" fill="#D8D6D0" font-size="15">биомаркеры на выходе</text></g>
@@ -424,7 +431,7 @@ footer{padding:28px 6vw 34px;font-size:12px;color:var(--mute);display:flex;justi
   var svg=nav.querySelector('svg'); var NS='http://www.w3.org/2000/svg';
   chs.forEach(function(c,i){var a=-Math.PI/2+i*2*Math.PI/chs.length; var d=document.createElementNS(NS,'circle'); d.setAttribute('class','dot'); d.setAttribute('r','2.6'); d.setAttribute('cx',32+28*Math.cos(a)); d.setAttribute('cy',32+28*Math.sin(a)); d.addEventListener('click',function(){c.scrollIntoView({behavior:'smooth'})}); svg.appendChild(d); c._dot=d;});
   // sticky chapter lengths
-  chs.forEach(function(c){var len=parseFloat(c.dataset.len||'1'); if(c.querySelector('.stage')) c.style.height=(len*100)+'svh'; if(c.classList.contains('hero')) c.style.height='100svh'; if(c.classList.contains('exhale')) c.style.height='100svh';});
+  chs.forEach(function(c){var len=parseFloat(c.dataset.len||'1'); if(c.querySelector('.stage')) c.style.height=(len*100)+'svh'; if(c.classList.contains('hero')) c.style.height='100svh'; if(c.classList.contains('exhale')) c.style.height=window.matchMedia('(max-width:900px)').matches?'auto':'100svh';});
   function progressOf(c){var r=c.getBoundingClientRect(); var total=c.offsetHeight-window.innerHeight; if(total<=0) return 0; return Math.min(1,Math.max(0,-r.top/total));}
   var shore=document.getElementById('shore'), seasons=document.getElementById('seasons'), day=document.getElementById('day');
   var track=document.getElementById('track'), moms=[].slice.call(track.children), clock=document.getElementById('clock'), dfill=document.getElementById('dfill'), dbar=document.getElementById('dbar');
@@ -432,6 +439,7 @@ footer{padding:28px 6vw 34px;font-size:12px;color:var(--mute);display:flex;justi
   var dates=[].slice.call(document.querySelectorAll('#dates div')), stags=[].slice.call(document.querySelectorAll('#seasontags div'));
   function setLayer(sec,i){sec.querySelectorAll('.layer').forEach(function(l){l.classList.toggle('on',+l.dataset.i<=i)}); sec.querySelectorAll('.sw').forEach(function(s){s.hidden=+s.dataset.i!==i})}
   var vids=[].slice.call(document.querySelectorAll('.mom video, .shore video'));
+  var mq=window.matchMedia('(max-width:900px)'); var MOB=mq.matches; mq.addEventListener&&mq.addEventListener('change',function(e){MOB=e.matches; if(!MOB){moms.forEach(function(m){m.style.opacity='';m.style.zIndex='';m.style.pointerEvents='';var c=m.querySelector('.cap'); if(c) c.style.opacity=''})}});
   var sm={pd:0,pq:0,p:0};
   function lerp(a,b,t){return a+(b-a)*t}
   function upd(){
@@ -444,7 +452,7 @@ footer{padding:28px 6vw 34px;font-size:12px;color:var(--mute);display:flex;justi
     // seasons
     var pq=progressOf(seasons); sm.pq=lerp(sm.pq,pq,0.12); pq=sm.pq; seasons.querySelector('.cap').style.opacity=pq>0.94?0:1; seasons.querySelector('[data-i="1"]').style.opacity=Math.min(1,Math.max(0,(pq-0.35)/0.4)); stags.forEach(function(t,i){t.classList.toggle('on',pq>=i*0.25 && pq<(i+1)*0.25 || (i===3&&pq>=0.75))});
     // day
-    var pd=progressOf(day); sm.pd=lerp(sm.pd,pd,0.12); pd=sm.pd; var n=moms.length; var x=pd*(n-1); track.style.transform='translate3d('+(-x*100)+'vw,0,0)'; var idx=Math.round(x); clock.textContent=moms[idx].dataset.t; dfill.style.width=(pd*100)+'%'; moms.forEach(function(m,i){m._lab.classList.toggle('on',i===idx)});
+    var pd=progressOf(day); sm.pd=lerp(sm.pd,pd,MOB?0.3:0.12); pd=sm.pd; var n=moms.length; var x=pd*(n-1); var idx=Math.round(x); if(MOB){track.style.transform='none'; moms.forEach(function(m,i){var d=Math.abs(i-x); m.style.opacity=Math.max(0,1-d*1.6); var c=m.querySelector('.cap'); if(c) c.style.opacity=Math.max(0,1-d*3); m.style.zIndex=i===idx?2:1; m.style.pointerEvents=i===idx?'auto':'none'});} else {track.style.transform='translate3d('+(-x*100)+'vw,0,0)';} clock.textContent=moms[idx].dataset.t; dfill.style.width=(pd*100)+'%'; moms.forEach(function(m,i){m._lab.classList.toggle('on',i===idx)});
     vids.forEach(function(v){var r=v.getBoundingClientRect(); var vis=r.right>0&&r.left<window.innerWidth&&r.bottom>0&&r.top<window.innerHeight; if(vis){if(v.paused){var pr=v.play(); if(pr&&pr.catch)pr.catch(function(){})}} else if(!v.paused) v.pause();});
     // reveal lines
     document.querySelectorAll('.ch:not(.hero) .line').forEach(function(l){var r=l.getBoundingClientRect(); if(r.top<window.innerHeight*0.9) l.classList.add('in')});
