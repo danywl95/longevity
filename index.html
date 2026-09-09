@@ -57,9 +57,9 @@ h1,h2,h3{font-weight:300;margin:0;line-height:1.06;letter-spacing:-.005em;text-w
 .hero .word{position:absolute;left:0;right:0;top:38%;text-align:center;font-size:clamp(38px,9vw,132px);letter-spacing:.42em;padding-left:.42em;font-weight:300;z-index:3}
 .hero .word span{opacity:0;display:inline-block;animation:let .9s ease forwards}
 @keyframes let{to{opacity:1}}
-.hero .cap{bottom:8vh;max-width:none;right:6vw}
+.hero .cap{bottom:15vh;max-width:none;right:6vw}
 .hero .meta{display:flex;gap:28px;flex-wrap:wrap;margin-top:26px;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--mute)}
-.enter{position:absolute;left:50%;bottom:4vh;transform:translateX(-50%);z-index:4;font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--paper2);display:flex;flex-direction:column;align-items:center;gap:10px}
+.enter{position:absolute;left:50%;bottom:3vh;transform:translateX(-50%);z-index:4;font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--paper2);display:flex;flex-direction:column;align-items:center;gap:10px}
 .enter:after{content:"";width:1px;height:38px;background:var(--paper2);opacity:.6;animation:drop 1.8s ease-in-out infinite}
 @keyframes drop{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
 
@@ -104,7 +104,10 @@ h1,h2,h3{font-weight:300;margin:0;line-height:1.06;letter-spacing:-.005em;text-w
 .cycle .st.in{opacity:1;transform:none}
 
 /* value */
-.value{min-height:100svh;padding:clamp(90px,12vw,160px) 6vw;display:flex;flex-direction:column;justify-content:center;background:#0E0E0E}
+.value{min-height:100svh;padding:0 0 clamp(60px,8vw,110px);display:flex;flex-direction:column;justify-content:center;background:#0E0E0E;position:relative;overflow:hidden}
+.valbg{position:absolute;left:0;top:0;width:100%;height:auto;min-height:60%;max-height:78%;object-fit:cover;object-position:center 40%;opacity:.2;filter:brightness(.7);pointer-events:none;-webkit-mask-image:linear-gradient(180deg,#000 55%,transparent 100%);mask-image:linear-gradient(180deg,#000 55%,transparent 100%)}
+.valtop{position:relative;z-index:1;padding:clamp(90px,12vw,160px) 6vw 0}
+.value .stab,.value .after{position:relative;z-index:1;margin-left:6vw;margin-right:6vw}
 .value .nums{display:grid;grid-template-columns:repeat(3,1fr);gap:4vw;margin-top:48px}
 .value .n{opacity:0;transform:translateY(18px);transition:opacity .8s ease,transform .8s ease}
 .value .n.in{opacity:1;transform:none}
@@ -134,7 +137,12 @@ footer{padding:28px 6vw 34px;font-size:12px;color:var(--mute);display:flex;justi
 @media(max-width:900px){
   .ringnav{right:14px}.ringnav svg{width:48px;height:48px}.ringnav .lbl{display:none}
   .cap{left:6vw;right:6vw;bottom:8vh}
-  .dates{display:none}
+  .dates{display:grid;right:6vw;left:auto;top:12vh;transform:none;gap:9px;max-width:46vw}
+  .dates b{font-size:19px}.dates span{font-size:11px;display:block;line-height:1.25}
+  .shore .cap p{font-size:15px}
+  .four .n span,.value .n span{font-size:16px;max-width:none}
+  .feats div{font-size:17px;padding:13px 0}
+  .valbg{max-height:60%}
   .power{grid-template-columns:1fr;gap:40px}
   .value .nums{grid-template-columns:1fr;gap:34px}
   .doors{grid-template-columns:1fr}
@@ -146,7 +154,7 @@ footer{padding:28px 6vw 34px;font-size:12px;color:var(--mute);display:flex;justi
   .mom{position:absolute;inset:0;flex:none;width:100%;opacity:0}
   .mom:first-child{opacity:1}
   .mom .cap{right:6vw}
-  .cycle svg{max-width:none;width:112%;margin-left:-6%}
+  .cycle svg{max-width:none;width:100%;margin:0}
   .hero .word{top:30%}
   .clock{top:64px}
   .seasons .tags{top:12vh;bottom:auto;left:6vw;right:6vw;text-align:left;display:flex;flex-wrap:wrap;gap:6px 16px}
@@ -168,20 +176,25 @@ footer{padding:28px 6vw 34px;font-size:12px;color:var(--mute);display:flex;justi
 .topdl .short{display:none}
 
 /* karelia */
-.kar{padding:clamp(90px,12vw,160px) 6vw;background:#0E0E0E}
+.kar{padding:clamp(56px,7vw,96px) 6vw clamp(90px,12vw,160px);background:#0E0E0E}
+.kar .khead{display:grid;grid-template-columns:1.15fr .85fr;gap:6vw;align-items:end}
 .kar h2{font-size:clamp(30px,4vw,60px);max-width:22ch}
-.kar .lead{color:var(--paper2);font-weight:300;font-size:clamp(16px,1.3vw,20px);max-width:56ch;margin:20px 0 0}
-.kar .grid{display:grid;grid-template-columns:1.15fr 1fr;gap:6vw;margin-top:56px;align-items:start}
+.kar .lead{color:var(--paper2);font-weight:300;font-size:clamp(16px,1.3vw,20px);max-width:48ch;margin:0 0 6px}
+.kar .chart{margin-top:44px}.kar .mob{display:none}
+.kar .tez{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:40px}
+.kar .tez div{border-top:1px solid var(--line);padding-top:16px}
+.kar .tez b{display:block;font-size:clamp(26px,2.6vw,40px);font-weight:200;line-height:1;white-space:nowrap}
+.kar .tez span{display:block;font-size:15px;color:var(--paper2);margin-top:8px;line-height:1.4}
 .kar .chart{border-top:1px solid var(--line);padding-top:18px}
 .kar .chart .kick{display:block;margin-bottom:14px}
 .kar .chart svg{width:100%;height:auto;display:block}
-.kar .src{font-size:12px;color:var(--mute);margin-top:12px}
+.kar .src{font-size:13px;color:var(--mute);margin-top:12px}
 .kar .facts{display:grid;gap:0}
 .kar .facts div{padding:18px 0;border-bottom:1px solid var(--line);display:grid;grid-template-columns:120px 1fr;gap:18px;align-items:baseline}
 .kar .facts b{font-size:clamp(30px,3.2vw,46px);font-weight:200;line-height:1;font-variant-numeric:tabular-nums;white-space:nowrap}
 .kar .facts b small{font-size:.4em;color:var(--paper2);font-weight:400;margin-left:4px}
 .kar .facts span{font-size:15px;color:var(--paper2);line-height:1.45}
-.kar .land{margin-top:72px;border-top:1px solid var(--line);padding-top:28px;display:grid;grid-template-columns:1fr 1.15fr;gap:6vw;align-items:center}
+.kar .land{margin-top:72px;border-top:1px solid var(--line);padding-top:28px}.kar .land .dsk,.kar .land .mob{margin-top:28px}
 .kar .land h3{font-size:clamp(24px,2.6vw,38px)}
 .kar .land p{color:var(--paper2);font-weight:300;font-size:15px;margin:14px 0 0;max-width:46ch}
 .kar .land svg{width:100%;height:auto;display:block}
@@ -196,11 +209,15 @@ footer{padding:28px 6vw 34px;font-size:12px;color:var(--mute);display:flex;justi
 .four .n b small{font-size:.32em;font-weight:400;color:var(--paper2);margin-left:8px}
 .four .n span{display:block;font-size:14px;color:var(--paper2);margin-top:12px;max-width:26ch;line-height:1.45}
 .thesis{margin-top:48px;max-width:64ch;font-size:clamp(17px,1.5vw,23px);font-weight:300;color:var(--paper);border-left:1px solid var(--acc);padding-left:22px;line-height:1.4}
-.power{min-height:0;padding-top:clamp(60px,7vw,100px)}
+.power{min-height:0;padding-top:clamp(60px,7vw,100px);grid-template-columns:.8fr 1.2fr}
+.feats{display:grid;gap:0;align-self:center}
+.feats .kick{margin-bottom:10px}
+.feats div{padding:16px 0;border-bottom:1px solid var(--line);font-size:clamp(17px,1.4vw,22px);color:var(--paper2);font-weight:300}
+.feats div b{color:var(--paper);font-weight:500}
 .value .nums{grid-template-columns:repeat(4,1fr);gap:3vw}
 .value .n b{font-size:clamp(44px,5.6vw,92px)}
 .value .n b small{white-space:nowrap}
-.value .stab{margin-top:56px;border-top:1px solid var(--line);padding-top:22px;display:grid;grid-template-columns:1fr 1fr;gap:6vw;align-items:center}
+.value .stab{margin-top:64px;border-top:1px solid var(--line);padding-top:22px;display:grid;grid-template-columns:1fr 1fr;gap:6vw;align-items:center}
 .value .stab p{color:var(--paper2);font-weight:300;font-size:clamp(16px,1.3vw,20px);margin:0;max-width:50ch}
 .value .stab svg{width:100%;height:auto;display:block}
 .seasons .sl{transition:none}
@@ -210,6 +227,11 @@ footer{padding:28px 6vw 34px;font-size:12px;color:var(--mute);display:flex;justi
   .topdl{right:14px;top:14px}.topdl>button{padding:9px 12px;letter-spacing:.16em}.topdl .long{display:none}.topdl .short{display:inline}
   .dlmenu{width:min(320px,calc(100vw - 28px))}
   .kar .grid,.kar .land,.value .stab{grid-template-columns:1fr;gap:40px}
+  .kar .khead{grid-template-columns:1fr;gap:18px}.kar .lead{margin:0}
+  .kar .dsk{display:none}.kar .mob{display:block}
+  .kar .tez{grid-template-columns:1fr 1fr;gap:20px 16px;margin-top:32px}.kar .tez b{font-size:26px}.kar .tez span{font-size:14px}
+  .power{grid-template-columns:1fr}
+  #cycsvg{overflow:visible}#cycsvg text{font-size:27px}#cycsvg text[font-size="15"]{font-size:20px}#cycsvg text[font-size="12"]{font-size:16px}
   .kar .facts div{grid-template-columns:1fr;gap:6px}
   .four{grid-template-columns:1fr 1fr;gap:28px 20px}
   .four .n b{font-size:clamp(36px,11vw,56px)}
@@ -259,8 +281,8 @@ footer{padding:28px 6vw 34px;font-size:12px;color:var(--mute);display:flex;justi
     <div class="grad"></div>
     <div class="cap">
       <span class="kick line">Берег</span>
-      <h2><span class="sw" data-i="0">800 метров Ладоги, которых больше нет</span><span class="sw" data-i="1" hidden>Кольцо вокруг леса, который остаётся лесом</span><span class="sw" data-i="2" hidden>Так это будет выглядеть</span></h2>
-      <p><span class="sw" data-i="0">Так участок выглядит сегодня: скалы, сосны, ледниковые валуны и вода второго класса чистоты. Свободного берега с дорогой и электричеством на Ладоге почти не осталось — этот в собственности.</span><span class="sw" data-i="1" hidden>Так он размечен: корпус обнимает сохранённый лес, медблок и СПА, восемь коттеджей и три резиденции, банный комплекс у скал, пирс с мариной, три километра троп. Подеревная съёмка сделана — каждое дерево посчитано.</span><span class="sw" data-i="2" hidden>Номера смотрят на озеро, медблок — в тишину леса. Из номера в медблок — три минуты по кольцу. Архитектура растворяется в ландшафте, а не спорит с ним.</span></p>
+      <h2><span class="sw" data-i="0">800 метров Ладоги, которых больше нет</span><span class="sw" data-i="1" hidden>Кольцо вокруг леса, а не вместо него</span><span class="sw" data-i="2" hidden>Так это будет выглядеть</span></h2>
+      <p><span class="sw" data-i="0">Так участок выглядит сегодня: скалы, сосны, ледниковые валуны и заливы Ладожского озера. Свободного берега с дорогой и электричеством на Ладоге почти не осталось — этот в собственности.</span><span class="sw" data-i="1" hidden>Форму курорта продиктовал сам участок: корпус огибает существующий лес, а не вырубает его. Подеревная съёмка сделана — каждое дерево посчитано и учтено в плане. Медблок и СПА, восемь коттеджей и три резиденции, банный комплекс у скал, пирс с мариной, три километра троп — всё встроено в ландшафт, который остаётся таким, каким был.</span><span class="sw" data-i="2" hidden>Номера смотрят на озеро, медблок — в тишину леса. Из номера в медблок — три минуты по кольцу. Архитектура растворяется в ландшафте, а не спорит с ним.</span></p>
     </div>
     <div class="dates" id="dates">
       <div><b>1878</b><span>вид на этот берег — на финской банкноте</span></div>
@@ -273,20 +295,20 @@ footer{padding:28px 6vw 34px;font-size:12px;color:var(--mute);display:flex;justi
 
 <!-- 3 КАРЕЛИЯ -->
 <section class="ch kar" id="karelia" data-name="Карелия">
-  <span class="kick">Почему Карелия</span>
-  <h2 style="margin-top:18px">Поток растёт, а пятизвёздочных объектов — ноль</h2>
-  <p class="lead">Сортавала — ворота Карелии: через неё идёт 80% туристического трафика республики. Валаам, Рускеала, Ладожские шхеры — миллион гостей в год уже здесь. Размещать их в премиум-сегменте негде.</p>
-  <div class="grid">
-    <div class="chart"><span class="kick">Турпоток Республики Карелия · млн человек в год</span><svg viewBox="0 0 760 300" role="img" aria-label="Турпоток Карелии" font-family="Manrope,sans-serif"><line x1="40" y1="183" x2="740" y2="183" stroke="#F5F4F1" stroke-opacity=".1"/><text x="32" y="187" font-size="12" fill="#9C9992" text-anchor="end">1</text><line x1="40" y1="117" x2="740" y2="117" stroke="#F5F4F1" stroke-opacity=".1"/><text x="32" y="121" font-size="12" fill="#9C9992" text-anchor="end">2</text><line x1="40" y1="50" x2="740" y2="50" stroke="#F5F4F1" stroke-opacity=".1"/><text x="32" y="54" font-size="12" fill="#9C9992" text-anchor="end">3</text><rect x="40" y="193" width="54" height="57" fill="#F5F4F1" fill-opacity=".85"/><text x="67" y="185" font-size="13" fill="#F5F4F1" text-anchor="middle" font-weight="400">0,85</text><text x="67" y="270" font-size="12" fill="#9C9992" text-anchor="middle">2019</text><rect x="129" y="200" width="54" height="50" fill="#F5F4F1" fill-opacity=".85"/><text x="156" y="192" font-size="13" fill="#F5F4F1" text-anchor="middle" font-weight="400">0,75</text><text x="156" y="270" font-size="12" fill="#9C9992" text-anchor="middle">2020</text><rect x="219" y="187" width="54" height="63" fill="#F5F4F1" fill-opacity=".85"/><text x="246" y="179" font-size="13" fill="#F5F4F1" text-anchor="middle" font-weight="400">0,95</text><text x="246" y="270" font-size="12" fill="#9C9992" text-anchor="middle">2021</text><rect x="308" y="183" width="54" height="67" fill="#F5F4F1" fill-opacity=".85"/><text x="335" y="175" font-size="13" fill="#F5F4F1" text-anchor="middle" font-weight="400">1,0</text><text x="335" y="270" font-size="12" fill="#9C9992" text-anchor="middle">2022</text><rect x="398" y="181" width="54" height="69" fill="#F5F4F1" fill-opacity=".85"/><text x="425" y="173" font-size="13" fill="#F5F4F1" text-anchor="middle" font-weight="400">1,03</text><text x="425" y="270" font-size="12" fill="#9C9992" text-anchor="middle">2023</text><rect x="487" y="179" width="54" height="71" fill="#F5F4F1" fill-opacity=".85"/><text x="514" y="171" font-size="13" fill="#F5F4F1" text-anchor="middle" font-weight="400">1,06</text><text x="514" y="270" font-size="12" fill="#9C9992" text-anchor="middle">2024</text><rect x="577" y="154" width="54" height="96" fill="#D9A86C" fill-opacity=".85"/><text x="604" y="146" font-size="13" fill="#D9A86C" text-anchor="middle" font-weight="600">1,44</text><text x="604" y="270" font-size="12" fill="#9C9992" text-anchor="middle">2025</text><rect x="666" y="50" width="54" height="200" fill="none" stroke="#F5F4F1" stroke-dasharray="4 4" stroke-opacity=".7"/><text x="693" y="42" font-size="13" fill="#F5F4F1" text-anchor="middle" font-weight="400">3,0</text><text x="693" y="270" font-size="12" fill="#9C9992" text-anchor="middle">2030 цель</text><text x="604" y="288" font-size="11" fill="#D9A86C" text-anchor="middle">+36% за год</text></svg><div class="src">Источник: Министерство экономического развития Республики Карелия, 2026. Цель республики — 3 млн гостей к 2030 году.</div></div>
-    <div class="facts">
-      <div><b>0</b><span>отелей 5★ и medi-hotel в радиусе 100 км. Загрузка отелей Сортавалы — 85%, к 2030 году прогнозируется дефицит номерного фонда около 14%.</span></div>
-      <div><b>8<small>мин</small></b><span>от центра Сортавалы по круглогодичной дороге. Три часа от Петербурга на «Ласточке» или по трассе, пять–шесть — из Москвы, час — вертолётом. 16 млн человек живут в трёх–пяти часах от берега.</span></div>
-      <div><b>5<small>млрд ₽</small></b><span>Cosmos Selection строит курорт на том же острове: 24 га, 100 номеров и 82 гостевых дома, соглашение ПМЭФ-2026. Федеральные игроки уже верят в эту локацию — и идут в 4★ без медицины.</span></div>
-    </div>
+  <div class="khead">
+    <div><span class="kick">Почему Карелия</span><h2 style="margin-top:18px">Поток растёт, а пятизвёздочных объектов — ноль</h2></div>
+    <p class="lead">Сортавала — ворота Карелии: через неё идёт 80% туристического трафика республики. Валаам, Рускеала, Ладожские шхеры — миллион гостей в год уже здесь. Размещать их в премиум-сегменте негде.</p>
+  </div>
+  <div class="chart"><span class="kick">Турпоток Республики Карелия · млн человек в год</span><div class="dsk"><svg viewBox="0 0 1000 360" role="img" aria-label="Турпоток Карелии" font-family="Manrope,sans-serif"><line x1="48" y1="221" x2="980" y2="221" stroke="#F5F4F1" stroke-opacity=".1"/><text x="38" y="226" font-size="15" fill="#9C9992" text-anchor="end">1</text><line x1="48" y1="142" x2="980" y2="142" stroke="#F5F4F1" stroke-opacity=".1"/><text x="38" y="147" font-size="15" fill="#9C9992" text-anchor="end">2</text><line x1="48" y1="64" x2="980" y2="64" stroke="#F5F4F1" stroke-opacity=".1"/><text x="38" y="69" font-size="15" fill="#9C9992" text-anchor="end">3</text><rect x="48" y="233" width="70" height="67" fill="#F5F4F1" fill-opacity=".85"/><text x="83" y="223" font-size="18" fill="#F5F4F1" text-anchor="middle" font-weight="400">0,85</text><text x="83" y="325" font-size="15" fill="#9C9992" text-anchor="middle">2019</text><rect x="170" y="241" width="70" height="59" fill="#F5F4F1" fill-opacity=".85"/><text x="205" y="231" font-size="18" fill="#F5F4F1" text-anchor="middle" font-weight="400">0,75</text><text x="205" y="325" font-size="15" fill="#9C9992" text-anchor="middle">2020</text><rect x="291" y="225" width="70" height="75" fill="#F5F4F1" fill-opacity=".85"/><text x="326" y="215" font-size="18" fill="#F5F4F1" text-anchor="middle" font-weight="400">0,95</text><text x="326" y="325" font-size="15" fill="#9C9992" text-anchor="middle">2021</text><rect x="413" y="221" width="70" height="79" fill="#F5F4F1" fill-opacity=".85"/><text x="448" y="211" font-size="18" fill="#F5F4F1" text-anchor="middle" font-weight="400">1,0</text><text x="448" y="325" font-size="15" fill="#9C9992" text-anchor="middle">2022</text><rect x="535" y="219" width="70" height="81" fill="#F5F4F1" fill-opacity=".85"/><text x="570" y="209" font-size="18" fill="#F5F4F1" text-anchor="middle" font-weight="400">1,03</text><text x="570" y="325" font-size="15" fill="#9C9992" text-anchor="middle">2023</text><rect x="657" y="216" width="70" height="84" fill="#F5F4F1" fill-opacity=".85"/><text x="692" y="206" font-size="18" fill="#F5F4F1" text-anchor="middle" font-weight="400">1,06</text><text x="692" y="325" font-size="15" fill="#9C9992" text-anchor="middle">2024</text><rect x="778" y="187" width="70" height="113" fill="#D9A86C" fill-opacity=".85"/><text x="813" y="177" font-size="18" fill="#D9A86C" text-anchor="middle" font-weight="600">1,44</text><text x="813" y="325" font-size="15" fill="#9C9992" text-anchor="middle">2025</text><text x="813" y="346" font-size="13" fill="#D9A86C" text-anchor="middle">+36% за год</text><rect x="900" y="64" width="70" height="236" fill="none" stroke="#F5F4F1" stroke-dasharray="5 5" stroke-opacity=".7"/><text x="935" y="54" font-size="18" fill="#F5F4F1" text-anchor="middle" font-weight="400">3,0</text><text x="935" y="325" font-size="15" fill="#9C9992" text-anchor="middle">2030</text><text x="935" y="346" font-size="13" fill="#9C9992" text-anchor="middle">цель</text></svg></div><div class="mob"><svg viewBox="0 0 760 420" role="img" aria-label="Турпоток Карелии" font-family="Manrope,sans-serif"><line x1="56" y1="252" x2="740" y2="252" stroke="#F5F4F1" stroke-opacity=".1"/><text x="46" y="257" font-size="20" fill="#9C9992" text-anchor="end">1</text><line x1="56" y1="164" x2="740" y2="164" stroke="#F5F4F1" stroke-opacity=".1"/><text x="46" y="169" font-size="20" fill="#9C9992" text-anchor="end">2</text><line x1="56" y1="76" x2="740" y2="76" stroke="#F5F4F1" stroke-opacity=".1"/><text x="46" y="81" font-size="20" fill="#9C9992" text-anchor="end">3</text><rect x="56" y="265" width="78" height="75" fill="#F5F4F1" fill-opacity=".85"/><text x="95" y="255" font-size="24" fill="#F5F4F1" text-anchor="middle" font-weight="400">0,85</text><text x="95" y="370" font-size="20" fill="#9C9992" text-anchor="middle">2019</text><rect x="175" y="257" width="78" height="83" fill="#F5F4F1" fill-opacity=".85"/><text x="214" y="247" font-size="24" fill="#F5F4F1" text-anchor="middle" font-weight="400">0,95</text><text x="214" y="370" font-size="20" fill="#9C9992" text-anchor="middle">2021</text><rect x="294" y="249" width="78" height="91" fill="#F5F4F1" fill-opacity=".85"/><text x="333" y="239" font-size="24" fill="#F5F4F1" text-anchor="middle" font-weight="400">1,03</text><text x="333" y="370" font-size="20" fill="#9C9992" text-anchor="middle">2023</text><rect x="414" y="247" width="78" height="93" fill="#F5F4F1" fill-opacity=".85"/><text x="453" y="237" font-size="24" fill="#F5F4F1" text-anchor="middle" font-weight="400">1,06</text><text x="453" y="370" font-size="20" fill="#9C9992" text-anchor="middle">2024</text><rect x="533" y="213" width="78" height="127" fill="#D9A86C" fill-opacity=".85"/><text x="572" y="203" font-size="24" fill="#D9A86C" text-anchor="middle" font-weight="600">1,44</text><text x="572" y="370" font-size="20" fill="#9C9992" text-anchor="middle">2025</text><text x="572" y="396" font-size="18" fill="#D9A86C" text-anchor="middle">+36% за год</text><rect x="652" y="76" width="78" height="264" fill="none" stroke="#F5F4F1" stroke-dasharray="5 5" stroke-opacity=".7"/><text x="691" y="66" font-size="24" fill="#F5F4F1" text-anchor="middle" font-weight="400">3,0</text><text x="691" y="370" font-size="20" fill="#9C9992" text-anchor="middle">2030</text><text x="691" y="396" font-size="18" fill="#9C9992" text-anchor="middle">цель</text></svg></div><div class="src">Источник: Министерство экономического развития Республики Карелия, 2026. Цель республики — 3 млн гостей к 2030 году.</div></div>
+  <div class="tez">
+    <div><b>8 мин</b><span>от Сортавалы</span></div>
+    <div><b>3 часа</b><span>от Петербурга</span></div>
+    <div><b>16 млн</b><span>человек в 3–5 часах</span></div>
+    <div><b>5 млрд ₽</b><span>Cosmos Selection — на том же острове</span></div>
   </div>
   <div class="land">
-    <div><span class="kick">Земля</span><h3 style="margin-top:14px">Не дешёвая — недооценённая</h3><p>Сотка в Красной Поляне стоит от 7 млн ₽, на Алтае у озера — 1,5 млн. Здесь — 300 тысяч: 600 млн ₽ за 20 га с собственным берегом, дорогой и техусловиями. Покупатель входит до того, как рынок оценит Приладожье так же, как оценил Красную Поляну и Алтай.</p></div>
-    <div><svg viewBox="0 0 760 202" role="img" aria-label="Цена сотки" font-family="Manrope,sans-serif"><text x="196" y="26.0" font-size="14" fill="#F5F4F1" text-anchor="end" font-weight="600">LONGEVITY · Ладога</text><rect x="210" y="8" width="17" height="26" fill="#D9A86C" fill-opacity="1"/><text x="237" y="26.0" font-size="13" fill="#D9A86C">300 тыс. ₽</text><text x="196" y="74.0" font-size="14" fill="#D8D6D0" text-anchor="end" font-weight="400">Манжерок, Алтай</text><rect x="210" y="56" width="86" height="26" fill="#F5F4F1" fill-opacity="0.55"/><text x="306" y="74.0" font-size="13" fill="#D8D6D0">1,5 млн ₽ · ×5</text><text x="196" y="122.0" font-size="14" fill="#D8D6D0" text-anchor="end" font-weight="400">Сочи, берег моря</text><rect x="210" y="104" width="229" height="26" fill="#F5F4F1" fill-opacity="0.55"/><text x="449" y="122.0" font-size="13" fill="#D8D6D0">4 млн ₽ · ×13</text><text x="196" y="170.0" font-size="14" fill="#D8D6D0" text-anchor="end" font-weight="400">Красная Поляна</text><rect x="210" y="152" width="400" height="26" fill="#F5F4F1" fill-opacity="0.55"/><text x="620" y="170.0" font-size="13" fill="#D8D6D0">от 7 млн ₽ · ×23</text><text x="210" y="200" font-size="11" fill="#9C9992">₽ за сотку · нижняя граница предложений, 2026</text></svg></div>
+    <span class="kick">Земля</span><h3 style="margin-top:14px">Не дешёвая — недооценённая</h3>
+    <div class="dsk"><svg viewBox="0 0 1000 260" role="img" aria-label="Цена сотки" font-family="Manrope,sans-serif"><text x="214" y="31.0" font-size="18" fill="#F5F4F1" text-anchor="end" font-weight="600">LONGEVITY · Ладога</text><rect x="230" y="8" width="23" height="34" fill="#D9A86C" fill-opacity="1"/><text x="265" y="31.0" font-size="18" fill="#D9A86C">300 тыс. ₽/сот.</text><text x="214" y="91.0" font-size="18" fill="#D8D6D0" text-anchor="end" font-weight="400">Манжерок, Алтай</text><rect x="230" y="68" width="116" height="34" fill="#F5F4F1" fill-opacity="0.5"/><text x="358" y="91.0" font-size="18" fill="#D8D6D0">1,5 млн ₽/сот. · ×5</text><text x="214" y="151.0" font-size="18" fill="#D8D6D0" text-anchor="end" font-weight="400">Сочи, берег моря</text><rect x="230" y="128" width="309" height="34" fill="#F5F4F1" fill-opacity="0.5"/><text x="551" y="151.0" font-size="18" fill="#D8D6D0">4 млн ₽/сот. · ×13</text><text x="214" y="211.0" font-size="18" fill="#D8D6D0" text-anchor="end" font-weight="400">Красная Поляна</text><rect x="230" y="188" width="540" height="34" fill="#F5F4F1" fill-opacity="0.5"/><text x="782" y="211.0" font-size="18" fill="#D8D6D0">от 7 млн ₽/сот. · ×23</text><text x="230" y="258" font-size="13" fill="#9C9992">нижняя граница предложений, 2026</text></svg></div><div class="mob"><svg viewBox="0 0 760 388" role="img" aria-label="Цена сотки" font-family="Manrope,sans-serif"><text x="0" y="28" font-size="22" fill="#F5F4F1" font-weight="600">LONGEVITY · Ладога</text><rect x="0" y="38" width="31" height="34" fill="#D9A86C" fill-opacity="1"/><text x="43" y="63.0" font-size="22" fill="#D9A86C">300 тыс. ₽/сот.</text><text x="0" y="120" font-size="22" fill="#D8D6D0" font-weight="400">Манжерок, Алтай</text><rect x="0" y="130" width="154" height="34" fill="#F5F4F1" fill-opacity="0.5"/><text x="166" y="155.0" font-size="22" fill="#D8D6D0">1,5 млн ₽/сот. · ×5</text><text x="0" y="212" font-size="22" fill="#D8D6D0" font-weight="400">Сочи, берег моря</text><rect x="0" y="222" width="411" height="34" fill="#F5F4F1" fill-opacity="0.5"/><text x="423" y="247.0" font-size="22" fill="#D8D6D0">4 млн ₽/сот. · ×13</text><text x="0" y="304" font-size="22" fill="#D8D6D0" font-weight="400">Красная Поляна</text><rect x="0" y="314" width="720" height="34" fill="#F5F4F1" fill-opacity="0.5"/><text x="12" y="339.0" font-size="22" fill="#0B0B0B">от 7 млн ₽/сот. · ×23</text></svg></div>
   </div>
 </section>
 
@@ -294,12 +316,14 @@ footer{padding:28px 6vw 34px;font-size:12px;color:var(--mute);display:flex;justi
 <section class="ch seasons" id="seasons" data-name="Сезоны" data-len="2.2">
   <div class="stage">
     <img class="layer on" data-i="0" src="img/general.jpg" alt="">
-    <img class="layer" data-i="1" src="img/winter.jpg" alt="">
+    <img class="layer sl" data-i="1" src="img/fog_light.jpg" alt="">
+    <img class="layer sl" data-i="2" src="img/fog_heavy.jpg" alt="">
+    <img class="layer sl" data-i="3" src="img/winter.jpg" alt="">
     <div class="grad"></div>
     <div class="cap">
       <span class="kick line">Сезоны</span>
       <h2 class="line">Один берег. Четыре продукта в год.</h2>
-      <p class="line">Загрузка не зависит от лета. Белые ночи, туманы, северное сияние и ледостав — у каждого времени года свой повод приехать. Прокрутите — и лето станет зимой.</p>
+      <p class="line">Загрузка не зависит от лета. Белые ночи, туманы, северное сияние и ледостав — у каждого времени года свой повод приехать. Прокрутите — и лето через туман станет зимой.</p>
     </div>
     <div class="tags" id="seasontags">
       <div data-s="0">Белые ночи · 52 дня<i></i></div>
@@ -317,7 +341,7 @@ footer{padding:28px 6vw 34px;font-size:12px;color:var(--mute);display:flex;justi
     <div class="track" id="track">
       <div class="mom" data-t="Приезд" data-l="приезд"><img src="img/entrance.jpg" alt=""><div class="grad"></div><div class="cap"><span class="kick">Приезд · день первый</span><h2>Телефон ещё со мной. Через час он не понадобится.</h2><p>Машина остаётся вне видовых зон. Дальше — пешком, через каменное кольцо у визит-центра.</p></div></div>
       <div class="mom" data-t="07:30" data-l="биомаркеры"><img src="img/farm.jpg" alt=""><div class="grad"></div><div class="cap"><span class="kick">07:30</span><h2>Врач уже видел мои анализы.</h2><p>Их взяли на входе. Программа на семь дней собрана под мой метаболизм, сон и стресс. ИИ-система будет вести меня и после отъезда — 30 и 90 дней.</p></div></div>
-      <div class="mom" data-t="10:00" data-l="вода"><img src="img/poster_pool.jpg" alt="" style="object-position:center 82%"><video muted loop playsinline preload="metadata" poster="img/poster_pool.jpg"><source src="video/pool.mp4" type="video/mp4"></video><div class="grad"></div><div class="cap"><span class="kick">10:00</span><h2>Вода.</h2><p>Бассейн 25 метров, термальная зона, крио и кислород — утром. Открытый бассейн над Ладогой — круглый год.</p></div></div>
+      <div class="mom" data-t="10:00" data-l="вода"><img src="img/poster_pool.jpg" alt="" style="object-position:center 82%"><video muted loop playsinline preload="metadata" poster="img/poster_pool.jpg"><source src="video/pool.mp4" type="video/mp4"></video><div class="grad"></div><div class="cap"><span class="kick">10:00</span><h2>Вода.</h2><p>Бассейн 25 метров, термальная зона, крио и кислород — утром. Подогреваемый открытый бассейн в безветренном лесу — круглый год.</p></div></div>
       <div class="mom" data-t="12:00" data-l="лес"><img src="img/walk.jpg" alt=""><div class="grad"></div><div class="cap"><span class="kick">12:00</span><h2>Три километра леса — и ни одной машины.</h2><p>Терренкуры, настилы, падел, скандинавская ходьба. Программу можно продолжить прогулкой, а можно — ничем.</p></div></div>
       <div class="mom" data-t="17:00" data-l="баня"><img src="img/poster_sauna.jpg" alt=""><video muted loop playsinline preload="metadata" poster="img/poster_sauna.jpg"><source src="video/sauna.mp4" type="video/mp4"></video><div class="grad"></div><div class="cap"><span class="kick">17:00</span><h2>Баня по-чёрному. Потом — Ладога.</h2><p>Парильщик, веник, прорубь зимой. Шунгит, марциальные воды, габозерские грязи — то, что нельзя повторить в Подмосковье.</p></div></div>
       <div class="mom" data-t="19:30" data-l="ужин"><img src="img/shore.jpg" alt=""><div class="grad"></div><div class="cap"><span class="kick">19:30</span><h2>Ужин на берегу.</h2><p>Меню собирает нутрициолог под протокол. Второй ресторан — для тишины, lobby bar с камином — для разговора.</p></div></div>
@@ -335,27 +359,25 @@ footer{padding:28px 6vw 34px;font-size:12px;color:var(--mute);display:flex;justi
     <h2>Мы продаём не ночи. Мы возвращаем время.</h2>
     <div class="four" id="four">
       <div class="n"><b>34</b><span>кабинета медицинского блока — ядро курорта, от которого считается всё остальное</span></div>
-      <div class="n"><b>80</b><span>ключей: 72 номера, 8 береговых коттеджей и 3 резиденции — столько, сколько медблок обслуживает на пике</span></div>
+      <div class="n"><b>80<small>+ 3</small></b><span>ключей: 72 номера и 8 береговых коттеджей, плюс 3 резиденции — столько, сколько медблок обслуживает на пике</span></div>
       <div class="n"><b>809<small>тыс. ₽</small></b><span>программа 7 ночей: проживание, медицина, спа, питание и врач в одной цене</span></div>
       <div class="n"><b>0</b><span>пятизвёздочных объектов в регионе — ниша 5★ с превентивной медициной свободна</span></div>
     </div>
     <p class="thesis">Продукт продаёт программы восстановления, а не ночи. Отсюда средний чек выше отельного — и маржа, которой у гостиницы не бывает.</p>
   </div>
   <div class="power">
-    <div>
-      <p style="margin-top:0">Ядро курорта — медицинский блок на 34 кабинета, а не квадратные метры. Гость покупает программу на 5–14 ночей, где проживание, медицина, спа, питание и врач — в одной цене. Возвращается, потому что видит результат.</p>
-      <div class="menu">
-        <div><b>Диагностика и собственная лаборатория</b> · биомаркеры, эпигенетика</div>
-        <div><b>Longevity-протоколы</b> · функциональная медицина, IV-терапия, NAD+</div>
-        <div><b>Recovery</b> · криотерапия, гипербарическая оксигенация, фотобиомодуляция</div>
-        <div><b>Сон и brain health</b> · детокс, нутрициология, эстетическая медицина</div>
-        <div><b>Карельский код</b> · шунгит, марциальные воды, баня по-чёрному с парильщиком</div>
-      </div>
+    <div class="feats">
+      <span class="kick">Что внутри кольца</span>
+      <div><b>Собственная лаборатория</b> и биомаркеры</div>
+      <div><b>Longevity-протоколы</b></div>
+      <div><b>Recovery</b> · крио, кислород, свет</div>
+      <div><b>Сон и brain health</b></div>
+      <div><b>Карельский код</b> · шунгит, баня по-чёрному</div>
     </div>
     <div class="cycle">
-      <svg viewBox="0 0 800 640" role="img" aria-label="Кольцо гостя" id="cycsvg">
+      <svg viewBox="-70 0 940 640" role="img" aria-label="Кольцо гостя" id="cycsvg">
         <circle cx="400" cy="320" r="200" fill="none" stroke="rgba(255,255,255,.14)"/>
-        <circle cx="400" cy="320" r="200" fill="none" stroke="#F5F4F1" stroke-width="1.6" stroke-dasharray="1257" stroke-dashoffset="1257" id="cyc" style="transform:rotate(-90deg);transform-origin:50% 50%;transition:stroke-dashoffset 3.2s cubic-bezier(.4,0,.2,1)"/>
+        <circle cx="400" cy="320" r="200" fill="none" stroke="#F5F4F1" stroke-width="1.6" stroke-dasharray="1257" stroke-dashoffset="1257" id="cyc" style="transform-box:fill-box;transform-origin:center;transform:rotate(-90deg);transition:stroke-dashoffset 3.2s cubic-bezier(.4,0,.2,1)"/>
         <g font-family="Manrope,sans-serif" font-size="22" fill="#F5F4F1">
           <g class="st"><circle cx="400" cy="120" r="6"/><text x="400" y="86" text-anchor="middle">приезд · биомаркеры на входе</text></g>
           <g class="st"><circle cx="573" cy="220" r="6"/><text x="600" y="214">программа</text><text x="600" y="234" fill="#D8D6D0" font-size="15">7 ночей · медицина, спа, врач</text></g>
@@ -373,16 +395,19 @@ footer{padding:28px 6vw 34px;font-size:12px;color:var(--mute);display:flex;justi
 
 <!-- 7 ЭКОНОМИКА -->
 <section class="ch value" id="value" data-name="Экономика">
+  <img class="valbg" src="img/bear.jpg" alt="">
+  <div class="valtop">
   <span class="kick">Экономика</span>
   <h2 style="margin-top:18px;font-size:clamp(30px,4vw,60px)">Не эпические — хорошие, проверяемые цифры</h2>
   <div class="nums" id="nums">
     <div class="n"><b>4,5<small>млрд ₽</small></b><span>CAPEX с землёй. Земля — 600 млн, 13% проекта при норме 15–20%</span></div>
-    <div class="n"><b>4,5 / 2,05</b><span>выручка и EBITDA на стабилизации, млрд ₽ в год. Маржа 46% — за счёт программ</span></div>
-    <div class="n"><b>26,8<small>%</small></b><span>IRR на капитал с выходом, 19,1% — операционный. Окупаемость собственных средств — 6 лет</span></div>
+    <div class="n"><b>6–10<small>лет</small></b><span>окупаемость собственных средств при позитивном и негативном сценарии</span></div>
+    <div class="n"><b>26,8<small>%</small></b><span>IRR на капитал с выходом, 19,1% — операционный</span></div>
     <div class="n"><b>3,16<small>×</small></b><span>min DSCR при норме банка 1,5×. Ковенант проходит даже в стресс-сценарии при ставке 10,5%</span></div>
   </div>
+  </div>
   <div class="stab">
-    <div><span class="kick">Расчётная модель</span><p style="margin-top:14px">Загрузка растёт четыре года: 44 → 52 → 63 → 70%. На стабильной загрузке около 70% курорт делает 4,5 млрд ₽ выручки и 2,05 млрд EBITDA в год — потому что продаёт курс с медициной, а не номеро-ночь.</p></div>
+    <div><span class="kick">Расчётная модель</span><p style="margin-top:14px">Загрузка растёт четыре года: 44 → 52 → 63 → 70%. На стабильной загрузке около 70% курорт будет делать 4,5 млрд ₽ выручки и 2,05 млрд EBITDA в год — потому что продаёт курс с медициной, а не номеро-ночь.</p></div>
     <div><svg viewBox="0 0 760 280" role="img" aria-label="Рост загрузки" font-family="Manrope,sans-serif"><rect x="74" y="121" width="89" height="99" fill="#F5F4F1" fill-opacity="0.6"/><text x="119" y="113" font-size="15" fill="#F5F4F1" text-anchor="middle" font-weight="400">44%</text><text x="119" y="240" font-size="12" fill="#9C9992" text-anchor="middle">год 1</text><rect x="252" y="103" width="89" height="117" fill="#F5F4F1" fill-opacity="0.6"/><text x="296" y="95" font-size="15" fill="#F5F4F1" text-anchor="middle" font-weight="400">52%</text><text x="296" y="240" font-size="12" fill="#9C9992" text-anchor="middle">год 2</text><rect x="429" y="78" width="89" height="142" fill="#F5F4F1" fill-opacity="0.6"/><text x="474" y="70" font-size="15" fill="#F5F4F1" text-anchor="middle" font-weight="400">63%</text><text x="474" y="240" font-size="12" fill="#9C9992" text-anchor="middle">год 3</text><rect x="607" y="62" width="89" height="158" fill="#D9A86C" fill-opacity="1"/><text x="651" y="54" font-size="15" fill="#D9A86C" text-anchor="middle" font-weight="600">70%</text><text x="651" y="240" font-size="12" fill="#9C9992" text-anchor="middle">год 4</text><text x="30" y="278" font-size="11" fill="#9C9992">загрузка по годам после открытия</text><text x="740" y="278" font-size="12" fill="#D9A86C" text-anchor="end">год 4 · 4,5 млрд ₽ выручки · 2,05 млрд EBITDA</text></svg></div>
   </div>
   <p class="after">Полная финансовая модель в Excel — четыре сценария, структура CAPEX, банковские ковенанты — по запросу. Инвестиционная презентация — ниже.</p>
@@ -432,36 +457,53 @@ footer{padding:28px 6vw 34px;font-size:12px;color:var(--mute);display:flex;justi
   chs.forEach(function(c,i){var a=-Math.PI/2+i*2*Math.PI/chs.length; var d=document.createElementNS(NS,'circle'); d.setAttribute('class','dot'); d.setAttribute('r','2.6'); d.setAttribute('cx',32+28*Math.cos(a)); d.setAttribute('cy',32+28*Math.sin(a)); d.addEventListener('click',function(){c.scrollIntoView({behavior:'smooth'})}); svg.appendChild(d); c._dot=d;});
   // sticky chapter lengths
   chs.forEach(function(c){var len=parseFloat(c.dataset.len||'1'); if(c.querySelector('.stage')) c.style.height=(len*100)+'svh'; if(c.classList.contains('hero')) c.style.height='100svh'; if(c.classList.contains('exhale')) c.style.height=window.matchMedia('(max-width:900px)').matches?'auto':'100svh';});
-  function progressOf(c){var r=c.getBoundingClientRect(); var total=c.offsetHeight-window.innerHeight; if(total<=0) return 0; return Math.min(1,Math.max(0,-r.top/total));}
+  var geo={}; var VH=window.innerHeight;
+  function measure(){ VH=window.innerHeight; chs.forEach(function(c){ geo[c.id]={top:c.offsetTop,h:c.offsetHeight}; }); geo.doc=document.documentElement.scrollHeight-VH; }
+  measure(); window.addEventListener('resize',measure); window.addEventListener('load',measure); setTimeout(measure,800); setTimeout(measure,2500);
+  function progressOf(c){var g=geo[c.id]; var total=g.h-VH; if(total<=0) return 0; return Math.min(1,Math.max(0,(window.scrollY-g.top)/total));}
   var shore=document.getElementById('shore'), seasons=document.getElementById('seasons'), day=document.getElementById('day');
   var track=document.getElementById('track'), moms=[].slice.call(track.children), clock=document.getElementById('clock'), dfill=document.getElementById('dfill'), dbar=document.getElementById('dbar');
-  moms.forEach(function(m,i){var s=document.createElement('span'); s.textContent=m.dataset.t; s.style.left=(i/(moms.length-1)*100)+'%'; dbar.appendChild(s); m._lab=s;});
+  moms.forEach(function(m,i){var s=document.createElement('span'); s.textContent=m.dataset.t; s.style.left=(i/(moms.length-1)*100)+'%'; dbar.appendChild(s); m._lab=s; m._cap=m.querySelector('.cap');});
   var dates=[].slice.call(document.querySelectorAll('#dates div')), stags=[].slice.call(document.querySelectorAll('#seasontags div'));
-  function setLayer(sec,i){sec.querySelectorAll('.layer').forEach(function(l){l.classList.toggle('on',+l.dataset.i<=i)}); sec.querySelectorAll('.sw').forEach(function(s){s.hidden=+s.dataset.i!==i})}
-  var vids=[].slice.call(document.querySelectorAll('.mom video, .shore video'));
-  var mq=window.matchMedia('(max-width:900px)'); var MOB=mq.matches; mq.addEventListener&&mq.addEventListener('change',function(e){MOB=e.matches; if(!MOB){moms.forEach(function(m){m.style.opacity='';m.style.zIndex='';m.style.pointerEvents='';var c=m.querySelector('.cap'); if(c) c.style.opacity=''})}});
-  var sm={pd:0,pq:0,p:0};
+  var shoreLayers=[].slice.call(shore.querySelectorAll('.layer')), shoreSw=[].slice.call(shore.querySelectorAll('.sw')), seasonLayers=[1,2,3].map(function(i){return seasons.querySelector('[data-i="'+i+'"]')});
+  var lastShore=-1; function setLayer(i){ if(i===lastShore) return; lastShore=i; shoreLayers.forEach(function(l){l.classList.toggle('on',+l.dataset.i<=i)}); shoreSw.forEach(function(s){s.hidden=+s.dataset.i!==i}); }
+  var vids=[].slice.call(document.querySelectorAll('.hero video, .mom video, .shore video'));
+  var mq=window.matchMedia('(max-width:900px)'); var MOB=mq.matches; mq.addEventListener&&mq.addEventListener('change',function(e){MOB=e.matches; measure(); if(!MOB){moms.forEach(function(m){m.style.opacity='';m.style.zIndex='';m.style.pointerEvents='';if(m._cap) m._cap.style.opacity=''})}});
+  var sm={pd:0,pq:0,p:0,x:0,ly:window.scrollY,lt:0,dir:1,off:0,lxr:0};
+  var lines=[].slice.call(document.querySelectorAll('.ch:not(.hero) .line')), four=document.getElementById('four'), nums=document.getElementById('nums'), cyc=document.getElementById('cyc'); var fourDone=false, numsDone=false, cycDone=false, lastCur=-1, lastIdx=-1, lastTrack='', frame=0;
+  var seasonOp=[-1,-1,-1], dateOn=[], tagOn=[];
   function lerp(a,b,t){return a+(b-a)*t}
+  function setOp(el,v){ v=Math.round(v*1000)/1000; if(el._op!==v){ el._op=v; el.style.opacity=v; } }
   function upd(){
-    var y=window.scrollY, doc=document.documentElement.scrollHeight-window.innerHeight; var p=doc>0?y/doc:0;
+    frame++; var y=window.scrollY; var p=geo.doc>0?y/geo.doc:0;
     sm.p=lerp(sm.p,p,0.15); prog.style.strokeDashoffset=175.9*(1-sm.p);
-    var cur=0; chs.forEach(function(c,i){if(c.getBoundingClientRect().top<=window.innerHeight*0.5) cur=i;});
-    chs.forEach(function(c,i){c._dot.classList.toggle('on',i===cur)}); lbl.textContent=chs[cur].dataset.name;
+    var cur=0; for(var i=0;i<chs.length;i++){ if(geo[chs[i].id].top<=y+VH*0.5) cur=i; }
+    if(cur!==lastCur){ lastCur=cur; chs.forEach(function(c,i){c._dot.classList.toggle('on',i===cur)}); lbl.textContent=chs[cur].dataset.name; }
     // shore
-    var ps=progressOf(shore); setLayer(shore, ps<0.34?0:(ps<0.7?1:2)); shore.querySelector('.cap').style.opacity=ps>0.94?0:1; document.getElementById('dates').style.opacity=ps>0.94?0:1; dates.forEach(function(d,i){d.classList.toggle('in',ps>0.08+i*0.12)});
+    var ps=progressOf(shore); setLayer(ps<0.34?0:(ps<0.7?1:2)); dates.forEach(function(d,i){var on=ps>0.08+i*0.12; if(dateOn[i]!==on){dateOn[i]=on; d.classList.toggle('in',on)}});
     // seasons
-    var pq=progressOf(seasons); sm.pq=lerp(sm.pq,pq,0.12); pq=sm.pq; seasons.querySelector('.cap').style.opacity=pq>0.94?0:1; seasons.querySelector('[data-i="1"]').style.opacity=Math.min(1,Math.max(0,(pq-0.35)/0.4)); stags.forEach(function(t,i){t.classList.toggle('on',pq>=i*0.25 && pq<(i+1)*0.25 || (i===3&&pq>=0.75))});
+    var pq=progressOf(seasons); sm.pq=lerp(sm.pq,pq,0.12); pq=sm.pq; seasonLayers.forEach(function(l,k){var i=k+1; setOp(l,Math.min(1,Math.max(0,(pq-(i*0.25-0.1))/0.16)))}); stags.forEach(function(t,i){var on=(pq>=i*0.25 && pq<(i+1)*0.25) || (i===3&&pq>=0.75); if(tagOn[i]!==on){tagOn[i]=on; t.classList.toggle('on',on)}});
     // day
-    var pd=progressOf(day); sm.pd=lerp(sm.pd,pd,MOB?0.3:0.12); pd=sm.pd; var n=moms.length; var x=pd*(n-1); var idx=Math.round(x); if(MOB){track.style.transform='none'; moms.forEach(function(m,i){var d=Math.abs(i-x); m.style.opacity=Math.max(0,1-d*1.6); var c=m.querySelector('.cap'); if(c) c.style.opacity=Math.max(0,1-d*3); m.style.zIndex=i===idx?2:1; m.style.pointerEvents=i===idx?'auto':'none'});} else {track.style.transform='translate3d('+(-x*100)+'vw,0,0)';} clock.textContent=moms[idx].dataset.t; dfill.style.width=(pd*100)+'%'; moms.forEach(function(m,i){m._lab.classList.toggle('on',i===idx)});
-    vids.forEach(function(v){var r=v.getBoundingClientRect(); var vis=r.right>0&&r.left<window.innerWidth&&r.bottom>0&&r.top<window.innerHeight; if(vis){if(v.paused){var pr=v.play(); if(pr&&pr.catch)pr.catch(function(){})}} else if(!v.paused) v.pause();});
-    // reveal lines
-    document.querySelectorAll('.ch:not(.hero) .line').forEach(function(l){var r=l.getBoundingClientRect(); if(r.top<window.innerHeight*0.9) l.classList.add('in')});
-    var four=document.getElementById('four'); if(four.getBoundingClientRect().top<window.innerHeight*0.8){[].forEach.call(four.children,function(c,i){setTimeout(function(){c.classList.add('in')},i*250)})}
-    var nums=document.getElementById('nums'); if(nums.getBoundingClientRect().top<window.innerHeight*0.75){[].forEach.call(nums.children,function(c,i){setTimeout(function(){c.classList.add('in')},i*350)})}
-    var cyc=document.getElementById('cyc'); if(!cyc._done && cyc.getBoundingClientRect().top<window.innerHeight*0.75){cyc._done=true; cyc.style.strokeDashoffset=0; [].forEach.call(document.querySelectorAll('#cycsvg .st'),function(g,i){setTimeout(function(){g.classList.add('in')},300+i*520)});}
+    var pdRaw=progressOf(day); var n=moms.length; var xr=pdRaw*(n-1); var nowT=performance.now(); if(Math.abs(y-sm.ly)>0.5){ sm.dir=y>sm.ly?1:-1; sm.lt=nowT; } sm.ly=y;
+    var idle=nowT-sm.lt>140; var xt;
+    if(idle){ xt=xr; if(xr>0&&xr<n-1){ var lo=Math.floor(xr), fr=xr-lo; xt=sm.dir>0?(fr>0.2?lo+1:lo):(fr<0.8?lo:lo+1); } }
+    else { var dx=Math.abs(xr-sm.lxr); if(sm.off!==0){ var mag=Math.max(0,Math.abs(sm.off)-dx*0.5); sm.off=sm.off>0?mag:-mag; } xt=Math.max(0,Math.min(n-1,xr+sm.off)); }
+    var gd=geo[day.id]; var offscreen=(y<gd.top-VH*0.6)||(y>gd.top+gd.h-VH*0.4); if(offscreen){ sm.x=xr; sm.off=0; xt=xr; }
+    sm.lxr=xr; sm.x=lerp(sm.x,xt,idle?0.06:(MOB?0.3:0.16)); if(idle) sm.off=sm.x-xr; if(Math.abs(sm.x-xt)<0.0005) sm.x=xt; var x=sm.x; var pd=x/(n-1); var idx=Math.round(x);
+    if(MOB){ if(lastTrack!=='none'){track.style.transform='none'; lastTrack='none';} moms.forEach(function(m,i){var d=Math.abs(i-x); setOp(m,Math.max(0,1-d*1.6)); if(m._cap) setOp(m._cap,Math.max(0,1-d*3)); var z=i===idx?'2':'1'; if(m._z!==z){m._z=z; m.style.zIndex=z; m.style.pointerEvents=i===idx?'auto':'none';}}); }
+    else { var tr='translate3d('+(-x*100).toFixed(3)+'vw,0,0)'; if(tr!==lastTrack){lastTrack=tr; track.style.transform=tr;} }
+    if(idx!==lastIdx){ lastIdx=idx; clock.textContent=moms[idx].dataset.t; moms.forEach(function(m,i){m._lab.classList.toggle('on',i===idx)}); }
+    dfill.style.width=(pd*100).toFixed(2)+'%';
+    if(frame%6===0){ vids.forEach(function(v){var r=v.getBoundingClientRect(); var host=v.closest('.mom'); var shown=!host||(host._op===undefined?true:host._op>0.02); var vis=shown&&r.right>0&&r.left<window.innerWidth&&r.bottom>0&&r.top<VH; if(vis){if(v.paused||v.ended){var pr=v.play(); if(pr&&pr.catch)pr.catch(function(){})}} else if(!v.paused) v.pause();}); }
+    // reveals (cheap: cached list, elements dropped once shown)
+    if(lines.length&&frame%3===0){ lines=lines.filter(function(l){ if(l.getBoundingClientRect().top<VH*0.9){ l.classList.add('in'); return false; } return true; }); }
+    if(!fourDone&&four.getBoundingClientRect().top<VH*0.8){ fourDone=true; [].forEach.call(four.children,function(c,i){setTimeout(function(){c.classList.add('in')},i*250)}); }
+    if(!numsDone&&nums.getBoundingClientRect().top<VH*0.75){ numsDone=true; [].forEach.call(nums.children,function(c,i){setTimeout(function(){c.classList.add('in')},i*350)}); }
+    if(!cycDone&&cyc.getBoundingClientRect().top<VH*0.75){ cycDone=true; cyc.style.strokeDashoffset=0; [].forEach.call(document.querySelectorAll('#cycsvg .st'),function(g,i){setTimeout(function(){g.classList.add('in')},300+i*520)}); }
   }
   (function loop(){upd(); requestAnimationFrame(loop)})();
-  var hv=document.querySelector('.hero video'); if(hv){var pr=hv.play(); if(pr&&pr.catch)pr.catch(function(){})}
+  document.addEventListener('visibilitychange',function(){ if(!document.hidden) vids.forEach(function(v){v.load&&v.readyState===0&&v.load(); var pr=v.play(); if(pr&&pr.catch)pr.catch(function(){})}); });
+  window.addEventListener('pageshow',function(){ vids.forEach(function(v){var pr=v.play(); if(pr&&pr.catch)pr.catch(function(){})}); });
 })();
 </script>
 </body></html>
